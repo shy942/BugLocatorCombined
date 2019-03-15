@@ -2,8 +2,7 @@ package utility;
 
 import java.util.ArrayList;
 
-/*import lucenecheck.RepoSearchManager;
-import config.StaticData;*/
+
 
 public class SelectedBugs {
 
