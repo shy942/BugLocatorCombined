@@ -1,0 +1,476 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{38}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Abreu, Zoeteweij, Golsteijn, and van
+  Gemund}{Abreu et~al\mbox{.}}{2009}]%
+        {Abreu}
+\bibfield{author}{\bibinfo{person}{R. Abreu}, \bibinfo{person}{P. Zoeteweij},
+  \bibinfo{person}{R. Golsteijn}, {and} \bibinfo{person}{A.~J.~C. van Gemund}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{A {P}ractical {E}valuation of {S}pectrum-based
+  {F}ault {L}ocalization}.
+\newblock \bibinfo{journal}{\emph{J. Syst. Softw.}} \bibinfo{volume}{82},
+  \bibinfo{number}{11} (\bibinfo{date}{Nov.} \bibinfo{year}{2009}),
+  \bibinfo{pages}{1780--1792}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Asratian, Denley, and H\"{a}ggkvist}{Asratian
+  et~al\mbox{.}}{1998}]%
+        {bipartite}
+\bibfield{author}{\bibinfo{person}{A.~S. Asratian}, \bibinfo{person}{T.~M.~J.
+  Denley}, {and} \bibinfo{person}{R. H\"{a}ggkvist}.}
+  \bibinfo{year}{1998}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Bipartite Graphs and Their Applications}}.
+\newblock \bibinfo{publisher}{Cambridge University Press},
+  \bibinfo{address}{New York, NY, USA}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bachmann and Bernstein}{Bachmann and
+  Bernstein}{2009}]%
+        {bugid}
+\bibfield{author}{\bibinfo{person}{A. Bachmann} {and} \bibinfo{person}{A.
+  Bernstein}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Software Process Data Quality and Characteristics:
+  A Historical View on Open and Closed Source Projects}. In
+  \bibinfo{booktitle}{\emph{Proc. IWPSE}}. \bibinfo{pages}{119--128}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Deerwester, Dumais, Furnas, Landauer, and
+  Harshman}{Deerwester et~al\mbox{.}}{1990}]%
+        {LSIindexing}
+\bibfield{author}{\bibinfo{person}{S. Deerwester}, \bibinfo{person}{S.~T.
+  Dumais}, \bibinfo{person}{G.~W. Furnas}, \bibinfo{person}{T.~K. Landauer},
+  {and} \bibinfo{person}{R. Harshman}.} \bibinfo{year}{1990}\natexlab{}.
+\newblock \showarticletitle{Indexing by {L}atent {S}emantic {A}nalysis}.
+\newblock \bibinfo{journal}{\emph{Journal of the American Society for
+  Information Science}} \bibinfo{volume}{41}, \bibinfo{number}{6}
+  (\bibinfo{year}{1990}), \bibinfo{pages}{391--407}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Fang, Tao, and Zhai}{Fang
+  et~al\mbox{.}}{2004}]%
+        {Fang}
+\bibfield{author}{\bibinfo{person}{H. Fang}, \bibinfo{person}{T. Tao}, {and}
+  \bibinfo{person}{C. Zhai}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{A {F}ormal {S}tudy of {I}nformation {R}etrieval
+  {H}euristics}. In \bibinfo{booktitle}{\emph{Proc. SIGIR}}.
+  \bibinfo{pages}{49--56}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Feldman and van Gemund}{Feldman and van
+  Gemund}{2006}]%
+        {Feldman}
+\bibfield{author}{\bibinfo{person}{A. Feldman} {and} \bibinfo{person}{A. van
+  Gemund}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{A {T}wo-step {H}ierarchical {A}lgorithm for
+  {M}odel-based {D}iagnosis}. In \bibinfo{booktitle}{\emph{Proc. AAAI}}.
+  \bibinfo{pages}{827--833}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hofmann}{Hofmann}{2017}]%
+        {Hofmann}
+\bibfield{author}{\bibinfo{person}{Thomas Hofmann}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Probabilistic {L}atent {S}emantic {I}ndexing}.
+\newblock \bibinfo{journal}{\emph{SIGIR Forum}} \bibinfo{volume}{51},
+  \bibinfo{number}{2} (\bibinfo{year}{2017}), \bibinfo{pages}{211--218}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hovemeyer and Pugh}{Hovemeyer and
+  Pugh}{2004}]%
+        {FindBug}
+\bibfield{author}{\bibinfo{person}{D. Hovemeyer} {and} \bibinfo{person}{W.
+  Pugh}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Finding {B}ugs is {E}asy}.
+\newblock \bibinfo{journal}{\emph{SIGPLAN Not.}} \bibinfo{volume}{39},
+  \bibinfo{number}{12} (\bibinfo{year}{2004}), \bibinfo{pages}{92--106}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Jones and Harrold}{Jones and Harrold}{2005}]%
+        {Jones}
+\bibfield{author}{\bibinfo{person}{J.~A. Jones} {and} \bibinfo{person}{M.~J.
+  Harrold}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Empirical {E}valuation of the {T}arantula
+  {A}utomatic {F}ault-localization {T}echnique}. In
+  \bibinfo{booktitle}{\emph{Proc. ASE}}. \bibinfo{pages}{273--282}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kontostathis}{Kontostathis}{2007}]%
+        {Kontostathis}
+\bibfield{author}{\bibinfo{person}{A. Kontostathis}.}
+  \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Essential {D}imensions of {L}atent {S}emantic
+  {I}ndexing ({LSI})}. In \bibinfo{booktitle}{\emph{Proce. HICSS}}.
+  \bibinfo{pages}{73--73}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Lucia, Lo, Jiang, and Budi}{Lucia
+  et~al\mbox{.}}{2010}]%
+        {Lucia}
+\bibfield{author}{\bibinfo{person}{Lucia}, \bibinfo{person}{D. Lo},
+  \bibinfo{person}{L. Jiang}, {and} \bibinfo{person}{A. Budi}.}
+  \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{{C}omprehensive {E}valuation of {A}ssociation
+  measures for {F}ault {L}ocalization}. In \bibinfo{booktitle}{\emph{Proc.
+  ICSM}}. \bibinfo{pages}{1--10}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Lukins, Kraft, and Etzkorn}{Lukins
+  et~al\mbox{.}}{2008}]%
+        {Lukins}
+\bibfield{author}{\bibinfo{person}{S.K. Lukins}, \bibinfo{person}{N.A. Kraft},
+  {and} \bibinfo{person}{L.H. Etzkorn}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{{S}ource {C}ode {R}etrieval for {B}ug
+  {L}ocalization {U}sing {L}atent {D}irichlet {A}llocation}. In
+  \bibinfo{booktitle}{\emph{Proc. WCRE}}. \bibinfo{pages}{155--164}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Lukins, Kraft, and Etzkorn}{Lukins
+  et~al\mbox{.}}{2010}]%
+        {LukinsBL}
+\bibfield{author}{\bibinfo{person}{S.~K. Lukins}, \bibinfo{person}{N.~A.
+  Kraft}, {and} \bibinfo{person}{L.~H. Etzkorn}.}
+  \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{Bug {L}ocalization {U}sing {L}atent {D}irichlet
+  {A}llocation}.
+\newblock \bibinfo{journal}{\emph{Inf. Softw. Technol.}} \bibinfo{volume}{52},
+  \bibinfo{number}{9} (\bibinfo{year}{2010}), \bibinfo{pages}{972--990}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Maletic and Marcus}{Maletic and
+  Marcus}{2001}]%
+        {Maletic}
+\bibfield{author}{\bibinfo{person}{J.~I. Maletic} {and} \bibinfo{person}{A.
+  Marcus}.} \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{Supporting {P}rogram {C}omprehension {U}sing
+  {S}emantic and {S}tructural {I}nformation}. In
+  \bibinfo{booktitle}{\emph{Proce. ICSE}}. \bibinfo{pages}{103--112}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Marcus and Maletic}{Marcus and
+  Maletic}{2001}]%
+        {MarcusMaletic}
+\bibfield{author}{\bibinfo{person}{A. Marcus} {and} \bibinfo{person}{J.~I.
+  Maletic}.} \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{Identification of {H}igh-level {C}oncept {C}lones
+  in {S}ource {C}ode}. In \bibinfo{booktitle}{\emph{Proc. ASE}}.
+  \bibinfo{pages}{107--114}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Marcus and Maletic}{Marcus and
+  Maletic}{2003}]%
+        {MarcusLSI}
+\bibfield{author}{\bibinfo{person}{A. Marcus} {and} \bibinfo{person}{J.~I.
+  Maletic}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Recovering {D}ocumentation-to-{S}ource-{C}ode
+  {T}raceability {L}inks {U}sing {L}atent {S}emantic {I}ndexing}. In
+  \bibinfo{booktitle}{\emph{Proc. ICSE}}. \bibinfo{pages}{125--135}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Marcus, Sergeyev, Rajlich, and Maletic}{Marcus
+  et~al\mbox{.}}{2004}]%
+        {irmarcus}
+\bibfield{author}{\bibinfo{person}{A. Marcus}, \bibinfo{person}{A. Sergeyev},
+  \bibinfo{person}{V. Rajlich}, {and} \bibinfo{person}{J.I. Maletic}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{An {I}nformation {R}etrieval {A}pproach to
+  {C}oncept {L}ocation in {S}ource {C}ode}. In \bibinfo{booktitle}{\emph{Proc.
+  WCRE}}. \bibinfo{pages}{214--223}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Mayer and Stumptner}{Mayer and
+  Stumptner}{2007}]%
+        {Mayer}
+\bibfield{author}{\bibinfo{person}{W. Mayer} {and} \bibinfo{person}{M.
+  Stumptner}.} \bibinfo{year}{2007}\natexlab{}.
+\newblock \showarticletitle{Model-Based {D}ebugging -- {S}tate of the {A}rt
+  {A}nd {F}uture {C}hallenges}.
+\newblock \bibinfo{journal}{\emph{Electron. Notes Theor. Comput. Sci.}}
+  \bibinfo{volume}{174}, \bibinfo{number}{4} (\bibinfo{year}{2007}),
+  \bibinfo{pages}{61--82}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Moreno, Treadway, Marcus, and Shen}{Moreno
+  et~al\mbox{.}}{2014}]%
+        {Moreno}
+\bibfield{author}{\bibinfo{person}{L. Moreno}, \bibinfo{person}{J.J. Treadway},
+  \bibinfo{person}{A. Marcus}, {and} \bibinfo{person}{Wuwei Shen}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{{O}n the {U}se of {S}tack {T}races to {I}mprove
+  {T}ext {R}etrieval-{B}ased {B}ug {L}ocalization}. In
+  \bibinfo{booktitle}{\emph{Proc. ICSME}}. \bibinfo{pages}{151--160}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Nguyen, Nguyen, Al-Kofahi, Nguyen, and
+  Nguyen}{Nguyen et~al\mbox{.}}{2011}]%
+        {Nguyen}
+\bibfield{author}{\bibinfo{person}{A.~T. Nguyen}, \bibinfo{person}{T.~T.
+  Nguyen}, \bibinfo{person}{J. Al-Kofahi}, \bibinfo{person}{H.~V. Nguyen},
+  {and} \bibinfo{person}{T.~N. Nguyen}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{A {T}opic-based {A}pproach for {N}arrowing the
+  {S}earch {S}pace of {B}uggy {F}iles from a {B}ug {R}eport}. In
+  \bibinfo{booktitle}{\emph{Proc. ASE}}. \bibinfo{pages}{263--272}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ponte and Croft}{Ponte and Croft}{98}]%
+        {Ponte}
+\bibfield{author}{\bibinfo{person}{J.~M. Ponte} {and} \bibinfo{person}{W.~B.
+  Croft}.} \bibinfo{year}{98}\natexlab{}.
+\newblock \showarticletitle{A {L}anguage {M}odeling {A}pproach to {I}nformation
+  {R}etrieval}. In \bibinfo{booktitle}{\emph{Proc. SIGIR}}.
+  \bibinfo{pages}{275--281}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Rahman and Roy}{Rahman and Roy}{2018}]%
+        {fse2018masud}
+\bibfield{author}{\bibinfo{person}{M.~M. Rahman} {and} \bibinfo{person}{C.~K.
+  Roy}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Improving IR-Based Bug Localization with
+  Context-Aware Query Reformulation}. In \bibinfo{booktitle}{\emph{Proc.
+  ESEC/FSE}}. \bibinfo{pages}{12}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Rao and Kak}{Rao and Kak}{2011}]%
+        {Rao}
+\bibfield{author}{\bibinfo{person}{S. Rao} {and} \bibinfo{person}{A. Kak}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Retrieval from {S}oftware {L}ibraries for {B}ug
+  {L}ocalization: {A} {C}omparative {S}tudy of {G}eneric and {C}omposite {T}ext
+  {M}odels}. In \bibinfo{booktitle}{\emph{Proc. MSR}}. \bibinfo{pages}{43--52}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Robertson, Walker, and Beaulieu}{Robertson
+  et~al\mbox{.}}{2000}]%
+        {Robertson}
+\bibfield{author}{\bibinfo{person}{S.~E. Robertson}, \bibinfo{person}{S.
+  Walker}, {and} \bibinfo{person}{M. Beaulieu}.}
+  \bibinfo{year}{2000}\natexlab{}.
+\newblock \showarticletitle{Experimentation {A}s a {W}ay of {L}ife: {O}kapi at
+  {T}REC}.
+\newblock \bibinfo{journal}{\emph{Inf. Process. Manage.}} \bibinfo{volume}{36},
+  \bibinfo{number}{1} (\bibinfo{year}{2000}), \bibinfo{pages}{95--108}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Saha, Nanda, Dhoolia, Nandivada, Sinha, and
+  Chandra}{Saha et~al\mbox{.}}{2011}]%
+        {SahaFault}
+\bibfield{author}{\bibinfo{person}{D. Saha}, \bibinfo{person}{M.~G. Nanda},
+  \bibinfo{person}{P. Dhoolia}, \bibinfo{person}{V.~K. Nandivada},
+  \bibinfo{person}{V. Sinha}, {and} \bibinfo{person}{S. Chandra}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{{F}ault {L}ocalization for {D}ata-centric
+  {P}rograms}. In \bibinfo{booktitle}{\emph{Proc. ESCE/FSE}}.
+  \bibinfo{pages}{157--167}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Saha, Lawall, Khurshid, and Perry}{Saha
+  et~al\mbox{.}}{2014}]%
+        {Saha2}
+\bibfield{author}{\bibinfo{person}{R.K. Saha}, \bibinfo{person}{J. Lawall},
+  \bibinfo{person}{S. Khurshid}, {and} \bibinfo{person}{D.E. Perry}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{On the {E}ffectiveness of {I}nformation {R}etrieval
+  {B}ased {B}ug {L}ocalization for {C} {P}rograms}. In
+  \bibinfo{booktitle}{\emph{Proc. ICSME}}. \bibinfo{pages}{161--170}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Saha, Lease, Khurshid, and Perry}{Saha
+  et~al\mbox{.}}{2013}]%
+        {Saha}
+\bibfield{author}{\bibinfo{person}{R.K. Saha}, \bibinfo{person}{M. Lease},
+  \bibinfo{person}{S. Khurshid}, {and} \bibinfo{person}{D.E. Perry}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{{I}mproving {B}ug {L}ocalization using {S}tructured
+  {I}nformation {R}etrieval}. In \bibinfo{booktitle}{\emph{Proc. ASE}}.
+  \bibinfo{pages}{345--355}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Salton and Buckley}{Salton and
+  Buckley}{1988}]%
+        {Salton}
+\bibfield{author}{\bibinfo{person}{G. Salton} {and} \bibinfo{person}{C.
+  Buckley}.} \bibinfo{year}{1988}\natexlab{}.
+\newblock \showarticletitle{Term-weighting {A}pproaches in {A}utomatic {T}ext
+  {R}etrieval}.
+\newblock \bibinfo{journal}{\emph{Inf. Process. Manage.}} \bibinfo{volume}{24},
+  \bibinfo{number}{5} (\bibinfo{year}{1988}), \bibinfo{pages}{513--523}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Salton and McGill}{Salton and McGill}{1986}]%
+        {SaltonMIR}
+\bibfield{author}{\bibinfo{person}{G. Salton} {and} \bibinfo{person}{M.~J.
+  McGill}.} \bibinfo{year}{1986}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Introduction to {M}odern {I}nformation
+  {R}etrieval}}.
+\newblock \bibinfo{publisher}{McGraw-Hill, Inc.}
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Salton, Wong, and Yang}{Salton
+  et~al\mbox{.}}{1975}]%
+        {vector-space-model}
+\bibfield{author}{\bibinfo{person}{G. Salton}, \bibinfo{person}{A. Wong}, {and}
+  \bibinfo{person}{C.~S. Yang}.} \bibinfo{year}{1975}\natexlab{}.
+\newblock \showarticletitle{A Vector Space Model for Automatic Indexing}.
+\newblock \bibinfo{journal}{\emph{Commun. ACM}} \bibinfo{volume}{18},
+  \bibinfo{number}{11} (\bibinfo{year}{1975}), \bibinfo{pages}{613--620}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Sisman and Kak}{Sisman and Kak}{2013}]%
+        {Sisman}
+\bibfield{author}{\bibinfo{person}{B. Sisman} {and} \bibinfo{person}{A.C.
+  Kak}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Assisting {C}ode {S}earch with z{A}utomatic {Q}uery
+  {R}eformulation for {B}ug {L}ocalization}. In \bibinfo{booktitle}{\emph{Proc.
+  MSR}}. \bibinfo{pages}{309--318}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Tang, Tan, and Cheng}{Tang
+  et~al\mbox{.}}{2009}]%
+        {Tang}
+\bibfield{author}{\bibinfo{person}{H. Tang}, \bibinfo{person}{S. Tan}, {and}
+  \bibinfo{person}{X. Cheng}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{A {S}urvey on {S}entiment {D}etection of
+  {R}eviews}.
+\newblock \bibinfo{journal}{\emph{Expert Systems with Applications}}
+  \bibinfo{volume}{36}, \bibinfo{number}{7} (\bibinfo{year}{2009}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wang, Parnin, and Orso}{Wang
+  et~al\mbox{.}}{2015}]%
+        {parninireval}
+\bibfield{author}{\bibinfo{person}{Q. Wang}, \bibinfo{person}{C. Parnin}, {and}
+  \bibinfo{person}{A. Orso}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Evaluating the Usefulness of IR-based Fault
+  Localization Techniques}. In \bibinfo{booktitle}{\emph{Proc. ISSTA}}.
+  \bibinfo{pages}{1--11}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wang and Lo}{Wang and Lo}{2014}]%
+        {Wang}
+\bibfield{author}{\bibinfo{person}{S. Wang} {and} \bibinfo{person}{D. Lo}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Version {H}istory, {S}imilar {R}eport, and
+  {S}tructure: {P}utting {T}hem {T}ogether for {I}mproved {B}ug
+  {L}ocalization}. In \bibinfo{booktitle}{\emph{Proc. ICPC}}.
+  \bibinfo{pages}{53--63}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wang and Lo}{Wang and Lo}{2016}]%
+        {Wang2}
+\bibfield{author}{\bibinfo{person}{Shaowei Wang} {and} \bibinfo{person}{David
+  Lo}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{AmaLgam+: Composing {R}ich {I}nformation {S}ources
+  for {A}ccurate {B}ug {L}ocalization}.
+\newblock \bibinfo{journal}{\emph{Journal of Software: Evolution and Process}}
+  \bibinfo{volume}{28} (\bibinfo{year}{2016}), \bibinfo{pages}{921--942}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zeller and Hildebrandt}{Zeller and
+  Hildebrandt}{2002}]%
+        {Zeller:2002}
+\bibfield{author}{\bibinfo{person}{A. Zeller} {and} \bibinfo{person}{R.
+  Hildebrandt}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Simplifying and {I}solating {F}ailure-{I}nducing
+  {I}nput}.
+\newblock \bibinfo{journal}{\emph{IEEE Trans. Softw. Eng.}}
+  \bibinfo{volume}{28}, \bibinfo{number}{2} (\bibinfo{year}{2002}),
+  \bibinfo{pages}{183--200}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhang, He, Gupta, and Gupta}{Zhang
+  et~al\mbox{.}}{2005}]%
+        {Zhang:2005}
+\bibfield{author}{\bibinfo{person}{X. Zhang}, \bibinfo{person}{H. He},
+  \bibinfo{person}{N. Gupta}, {and} \bibinfo{person}{R. Gupta}.}
+  \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Experimental {E}valuation of {U}sing {D}ynamic
+  {S}lices for {F}ault {L}ocation}. In \bibinfo{booktitle}{\emph{Proc.
+  AADEBUG}}. \bibinfo{pages}{33--42}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhou, Zhang, and Lo}{Zhou
+  et~al\mbox{.}}{2012}]%
+        {Jian}
+\bibfield{author}{\bibinfo{person}{J. Zhou}, \bibinfo{person}{H. Zhang}, {and}
+  \bibinfo{person}{D. Lo}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{{W}here {S}hould the {B}ugs be {F}ixed? {M}ore
+  {A}ccurate {I}nformation {R}etrieval-{B}ased {B}ug {L}ocalization {B}ased on
+  {B}ug {R}eports}. In \bibinfo{booktitle}{\emph{Proc. ICSE}}.
+  \bibinfo{pages}{14--24}.
+\newblock
+
+
+\end{thebibliography}
