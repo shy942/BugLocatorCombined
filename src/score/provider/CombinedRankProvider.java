@@ -283,7 +283,7 @@ public class CombinedRankProvider {
             
             
             int TOPK = 1000;
-            double[] weights = new double[] { 0.3, 0.7 , 0, 0};
+            double[] weights = new double[] {0, 1 , 0, 0};
             new CombinedRankProvider(repoName, TOPK)
                     .collectCombinedResultRanksBasic(weights);
         }

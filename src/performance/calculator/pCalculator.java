@@ -419,7 +419,7 @@ public class pCalculator {
         /*String[] repos = { "ecf", "eclipse.jdt.core", "eclipse.jdt.debug",
                 "eclipse.jdt.ui", "eclipse.pde.ui", "tomcat70" };*/
         
-        String[] repos={"Eclipse"};
+        String[] repos={"SWT"};
         
         
         //String resKey = "res-0-bluir-0-st-0-0-v3";

@@ -14,6 +14,7 @@ public class FileMapLoader {
 		ArrayList<String> lines = ContentLoader.getAllLinesOptList(keysFile);
 		HashMap<Integer, String> keyMap = new HashMap<>();
 		for (String line : lines) {
+		    System.out.println(line);
 			String[] parts = line.split(":");
 			String key = parts[1].trim();
 			//String canonical = key.replace('\\', '.');

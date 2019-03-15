@@ -17,7 +17,7 @@ public class BLUiRScoreProvider {
 	public BLUiRScoreProvider(String repoName, combinedScore amal) {
 		this.repoName = repoName;
 		this.resultFile = StaticData.BLP2_EXP
-				+ "/results/" + repoName + "/BLUiR/results"+repoName+"100.txt";
+				+ "/results/" + repoName + "/BLUiR/results"+repoName+".txt";
 		this.fileKeyMap = amal.fileKeyMap;
 		this.selectedBugs = SelectedBugs.getSelectedBugs(repoName);
 	}
@@ -87,7 +87,7 @@ public class BLUiRScoreProvider {
 	}
 
 	public static void main(String[] args) {
-		String repoName = "ecf";
+		String repoName = "SWT";
 		combinedScore comSc = new combinedScore(repoName);
 		System.out.println(new BLUiRScoreProvider(repoName, comSc)
 				.extractBLUiRScores());
