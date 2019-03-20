@@ -11,6 +11,7 @@ import java.util.Map;
 import config.StaticData;
 import utility.ContentWriter;
 import utility.ItemSorter;
+import utility.MiscUtility;
 import utility.SelectedBugs;
 
 public class CombinedRankProvider {
@@ -186,8 +187,10 @@ public class CombinedRankProvider {
             
             // bluAMIR score
             HashMap<Integer, Double> bluamirMap = new HashMap<>();
+            HashMap<Integer, Double> sortedbluamirMap = new HashMap<>();
             if (comSc.bluamirScoreMap.containsKey(bugID)) {
                 bluamirMap = comSc.bluamirScoreMap.get(bugID);
+                sortedbluamirMap=MiscUtility.sortByValues(bluamirMap);
             }
 
             // bluir score
@@ -221,7 +224,7 @@ public class CombinedRankProvider {
             // int weights[] = { 1, 1, 1, 1, 1 };
             System.out.println(bugID);
             //if(vhMap.size()>0){
-            System.out.println("BLuAMIR map: "+bluamirMap);
+            System.out.println("BLuAMIR map: "+sortedbluamirMap);
             System.out.println("BLUiR map: "+bluirMap);
             System.out.println("Verion map: "+vhMap);
             System.out.println("Author map: "+asMap);
@@ -231,7 +234,7 @@ public class CombinedRankProvider {
             HashMap<Integer, Double> myMap = new HashMap<>();
             myMap = calculateFinalScores(weights, 
                     //blocatorMap, 
-                    bluamirMap,
+                    sortedbluamirMap,
                     bluirMap, 
                     vhMap,
                     //stMap, 
@@ -268,7 +271,7 @@ public class CombinedRankProvider {
         /*String[] repos = { "ecf", "eclipse.jdt.core", "eclipse.jdt.debug",
                 "eclipse.jdt.ui", "eclipse.pde.ui", "tomcat70" };*/
         
-        String[] repos={"SWT"};
+        String[] repos={"Eclipse"};
         
         //BRICKScoreProvider.TOP_CUT_FROM_BRICK=100000;
         
@@ -283,7 +286,7 @@ public class CombinedRankProvider {
             
             
             int TOPK = 1000;
-            double[] weights = new double[] {0, 1 , 0, 0};
+            double[] weights = new double[] {1, 0, 0, 0};
             new CombinedRankProvider(repoName, TOPK)
                     .collectCombinedResultRanksBasic(weights);
         }

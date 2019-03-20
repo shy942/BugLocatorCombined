@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import utility.FileMapLoader;
+import utility.MiscUtility;
 import utility.SelectedBugs;
 import loader.BugFixCommitDateLoader;
 import loader.BugReportDateLoader;
@@ -67,7 +68,7 @@ public class combinedScore {
     public void loadBLuAMIRScores()
     {
         BLuAMIRScoreProvider bluamir = new BLuAMIRScoreProvider(repoName, this);
-        this.bluamirScoreMap = bluamir.extractBLuAMIRScores();
+        this.bluamirScoreMap =bluamir.extractBLuAMIRScores();
     }
     
     /*public void loadBLScores() {

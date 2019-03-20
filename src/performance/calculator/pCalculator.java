@@ -146,7 +146,7 @@ public class pCalculator {
         double sumPrecK = 0;
         double sumRecK = 0;
         double sumrrk = 0;
-
+       // System.out.println(resultMap);
         for (int bugID : this.selectedBugs) {
             if (resultMap.containsKey(bugID)) {
                 
@@ -159,6 +159,7 @@ public class pCalculator {
                 boolean found = checkSolutionFound(goldFiles, resultFiles);
                 if (found) {
                     TopKAcc++;
+                    //System.out.println(bugID);
                     double preck = getAvgPrecisionK(resultFiles, goldFiles,
                             TOPK);
                     sumPrecK += preck;
@@ -170,6 +171,8 @@ public class pCalculator {
             }
         }
         // now get the mean
+        //System.out.println(this.selectedBugs.size());
+        //System.out.println(TopKAcc);
         this.TopKAcc = TopKAcc / this.selectedBugs.size();
         this.mapK = sumPrecK / this.selectedBugs.size();
         this.mrrK = sumrrk / this.selectedBugs.size();
@@ -419,7 +422,7 @@ public class pCalculator {
         /*String[] repos = { "ecf", "eclipse.jdt.core", "eclipse.jdt.debug",
                 "eclipse.jdt.ui", "eclipse.pde.ui", "tomcat70" };*/
         
-        String[] repos={"SWT"};
+        String[] repos={"Eclipse"};
         
         
         //String resKey = "res-0-bluir-0-st-0-0-v3";
@@ -434,8 +437,10 @@ public class pCalculator {
         int TOPK = 1000;
 
         int[] topks={1,5,10};
-        for (int topk = 1; topk <= 10; topk++) {
+        for (int topk = 1; topk <= 10; topk++) 
+        {
         //for(int topk:topks)   {
+        //int topk=1;
         TOPK = topk;
             for (String repoName : repos) {
                 // String repoName = "ecf";

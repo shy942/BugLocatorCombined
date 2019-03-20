@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import config.StaticData;
 import utility.ContentLoader;
+import utility.MiscUtility;
 import utility.SelectedBugs;
 
 public class BLUiRScoreProvider {
@@ -17,7 +18,7 @@ public class BLUiRScoreProvider {
 	public BLUiRScoreProvider(String repoName, combinedScore amal) {
 		this.repoName = repoName;
 		this.resultFile = StaticData.BLP2_EXP
-				+ "/results/" + repoName + "/BLUiR/results"+repoName+".txt";
+				+ "/results/" + repoName + "/BLUiR/results"+repoName+"100.txt";
 		this.fileKeyMap = amal.fileKeyMap;
 		this.selectedBugs = SelectedBugs.getSelectedBugs(repoName);
 	}
@@ -59,8 +60,9 @@ public class BLUiRScoreProvider {
 		HashMap<Integer, HashMap<Integer, Double>> scoreMap = new HashMap<>();
 		for (int bugID : resultMap.keySet()) {
 			HashMap<String, Double> fileMap = resultMap.get(bugID);
+			HashMap<String, Double> sortedFileMap=MiscUtility.sortByValues(fileMap);
 			HashMap<Integer, Double> temp = new HashMap<>();
-			for (String fileName : fileMap.keySet()) {
+			for (String fileName : sortedFileMap.keySet()) {
 				if (file2IDMap.containsKey(fileName)) {
 					int fileID = file2IDMap.get(fileName);
 					temp.put(fileID, fileMap.get(fileName));
@@ -77,7 +79,7 @@ public class BLUiRScoreProvider {
 		for (int fileID : this.fileKeyMap.keySet()) {
 			String canonical = this.fileKeyMap.get(fileID);
 			for (String myFile : uniqueFiles) {
-				if (canonical.endsWith(myFile)) {
+				if (canonical.equalsIgnoreCase(myFile)==true) {
 					file2IDMap.put(myFile, fileID);
 					break;
 				}
