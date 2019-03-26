@@ -29,7 +29,7 @@ public class SelectedBugCreator {
     {
         String baseForXMLfile="E:\\PhD\\Repo\\"+repo+"\\bugXML\\";
         String xmlFilePath=baseForXMLfile+xmlFileName;
-        String baseForOutput="E:\\PhD\\BugLocatorP2\\SelectedBug\\";
+        String baseForOutput="E:\\PhD\\BugLocatorP2\\selectedBugs\\";
        
         String outfile=baseForOutput+"\\"+repo+"\\"+"selectedbugs"+repo+".txt";
         ArrayList<String> selectedBugs=extractSelectedBug(xmlFilePath, outfile);

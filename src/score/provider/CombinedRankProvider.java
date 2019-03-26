@@ -286,8 +286,8 @@ public class CombinedRankProvider {
             
             
             int TOPK = 1000;
-            double[] weights = new double[] {1, 0, 0, 0};
-            new CombinedRankProvider(repoName, TOPK)
+            double[] weights = new double[] {0.1, 0.9, 0, 0};
+            new CombinedRankProvider(repoName, TOPK) 
                     .collectCombinedResultRanksBasic(weights);
         }
         long end = System.currentTimeMillis(); 

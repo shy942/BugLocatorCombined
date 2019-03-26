@@ -19,7 +19,7 @@ public class BLuAMIRScoreProvider {
     public BLuAMIRScoreProvider(String repoName, combinedScore amal) {
         this.repoName = repoName;
         this.resultFile = StaticData.BLP2_EXP
-                + "/results/" + repoName + "/BLuAMIR/results"+repoName+".txt";
+                + "/results/" + repoName + "/BLuAMIR/results"+repoName+"AsSc.txt";
         this.fileKeyMap = amal.fileKeyMap;
         this.selectedBugs = SelectedBugs.getSelectedBugs(repoName);
     }
@@ -88,7 +88,7 @@ public class BLuAMIRScoreProvider {
     }
 
     public static void main(String[] args) {
-        String repoName = "SWT";
+        String repoName = "ZXing";
         combinedScore comSc = new combinedScore(repoName);
         System.out.println(new BLuAMIRScoreProvider(repoName, comSc)
                 .extractBLuAMIRScores());

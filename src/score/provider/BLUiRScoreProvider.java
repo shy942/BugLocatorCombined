@@ -89,7 +89,7 @@ public class BLUiRScoreProvider {
 	}
 
 	public static void main(String[] args) {
-		String repoName = "SWT";
+		String repoName = "ZXing";
 		combinedScore comSc = new combinedScore(repoName);
 		System.out.println(new BLUiRScoreProvider(repoName, comSc)
 				.extractBLUiRScores());
