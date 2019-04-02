@@ -239,9 +239,9 @@ public class TokenRankProvider {
 			score = score / maxRank;
 			// this.newScoreMap.put(key, score);
 			QueryToken qtoken = tokendb.get(key);
-			if (!isPOS)
+			//if (!isPOS)
 				qtoken.tokenRankScore = score;
-			else
+			//else
 				//qtoken.posRankScore = score;
 			tokendb.put(key, qtoken);
 		}

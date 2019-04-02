@@ -3,6 +3,8 @@ package proposed;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.DirectedGraph;
@@ -25,6 +27,15 @@ public class TextRankBased {
         WordNetworkMaker networkMaker = new WordNetworkMaker(sentences);
         tokenRankMap = getQueryTokenRankScores(networkMaker, true);
         System.out.println(tokenRankMap);
+        
+        Iterator it = tokenRankMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String keyword = pair.getKey().toString();
+            QueryToken tokendb=(QueryToken)pair.getValue();
+            System.out.println(pair.getKey() + " = " + tokendb.tokenRankScore);
+            
+        }
         // tokenRankMap = getQueryTokenRankScores(networkMaker, true);
         //tokenRankMap = filterStopWords(tokenRankMap);
         //tokenRankMap=filterLowScores(tokenRankMap, "TR");
