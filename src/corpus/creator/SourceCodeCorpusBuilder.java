@@ -22,7 +22,7 @@ public class SourceCodeCorpusBuilder {
 	    this.corpus=corpus;
 		this.base=base;
 		this.sourceCodeFolder=base+"\\Corpus\\"+corpus;
-		this.sourceCodePPFolder=base+"\\processsedFolderBase\\"+corpus;
+		this.sourceCodePPFolder=base+"\\processsedFolderBase\\"+corpus+"\\";
 		this.javaFilePaths=new ArrayList<String>();
 		this.javaFilePathsLastName=new ArrayList<String>();
 		this.noOfFile=0;
@@ -37,7 +37,7 @@ public class SourceCodeCorpusBuilder {
 		for (String s : javaFilePaths)
 	    {
 		    i++;
-		    if(i>3) break;
+		    //if(i>3) break;
 	        String fileName=javaFilePathsLastName.get(file_track++);
 	    	//Remove initial copyright comment
 			CommentFilterer cf=new CommentFilterer(s,fileName);
@@ -45,9 +45,10 @@ public class SourceCodeCorpusBuilder {
 			
 			String methodFolder=this.base+"\\ExtractedMethod\\"+this.corpus;
 			MethodCorpusDeveloper developer=new MethodCorpusDeveloper(this.sourceCodeFolder, methodFolder,this.base);
-			developer.createMethodCorpus(developer.repoFolder);
+			//developer.createMethodCorpus(developer.repoFolder);
 			developer.extractMethods(s);
 			developer.saveMethods(s);
+			
 			String packageName=developer.getPackageName();
 			ArrayList<String> fileList=developer.returnFiles();
 			//String content=ContentLoader.readContentSimple("./data/processed/"+fileName);
@@ -66,13 +67,14 @@ public class SourceCodeCorpusBuilder {
 			String filePart="";
 			
 				
-			
+			String fileNameWithjava=spilter[spilter.length-1];
+			String fineNameTosave=fileNameWithjava.substring(0, fileNameWithjava.length()-5);
 			filePart=packageName+"."+spilter[spilter.length-1];
 			if(!listofFiles.contains(filePart))listofFiles.add(filePart);
 			
 			System.out.println(filePart);
 			//System.out.println(file_track+" Preprocessed:"+this.sourceCodePPFolder+filePart);
-			ContentWriter.writeContent(this.sourceCodePPFolder+filePart, preprocessed);
+			ContentWriter.writeContent(this.sourceCodePPFolder+fineNameTosave+".txt", preprocessed);
 		}
 		System.out.println("Total no. of files: "+file_track);
 		ContentWriter.writeContent(this.base+"\\FileInfo\\"+corpus+"-SourceFileNames.txt", listofFiles);

@@ -25,7 +25,7 @@ public class SourceCodePreprocessor {
 	}
 
 	public void loadStopWords() {
-		this.stopwords = ContentLoader.readContent(".\\NLP\\stop-words-english-total.txt");
+		this.stopwords = ContentLoader.readContent(".\\src\\NLP\\stop-words-english-total.txt");
 	}
 
 	protected ArrayList<String> removeStopWords(ArrayList<String> words) {
@@ -39,7 +39,7 @@ public class SourceCodePreprocessor {
 	}
 
 	public void loadJavaKeywords() {
-	    this.javaKeywords=ContentLoader.readContent(".\\NLP\\java-keywords.txt");
+	    this.javaKeywords=ContentLoader.readContent(".\\src\\NLP\\java-keywords.txt");
 		
 		
 	}

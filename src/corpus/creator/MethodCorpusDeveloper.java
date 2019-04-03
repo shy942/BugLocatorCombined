@@ -83,7 +83,7 @@ public class MethodCorpusDeveloper {
 			        }
 			    }*/
 			    
-			    
+			   
 				PackageDeclaration packageDec=cu.getPackage();
 				if(packageDec!=null){
 				//System.out.println(packageDec.toString());
@@ -153,8 +153,8 @@ public class MethodCorpusDeveloper {
 			//javaFileURL.replaceAll("\\\\", "/");
 			
 			
-			filePart=this.packageName+"."+index+"."+lastPart;
-		
+			//filePart=this.packageName+"."+index+"."+lastPart;
+			filePart=lastPart.substring(0,lastPart.length()-5)+"."+index+".txt";
 			String outFile = this.methodFolder + "\\"+filePart;
 			System.out.println("filePart:        "+filePart);
 			SourceCodePreprocessor scbpp=new SourceCodePreprocessor(methodContent);
