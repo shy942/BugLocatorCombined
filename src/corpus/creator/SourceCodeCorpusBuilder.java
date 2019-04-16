@@ -33,6 +33,7 @@ public class SourceCodeCorpusBuilder {
 	{
 		int file_track=0;
 		ArrayList<String> listofFiles=new ArrayList<>();
+		ArrayList<String> lengthList=new ArrayList<>();
 		int i=0;
 		for (String s : javaFilePaths)
 	    {
@@ -53,10 +54,12 @@ public class SourceCodeCorpusBuilder {
 			ArrayList<String> fileList=developer.returnFiles();
 			//String content=ContentLoader.readContentSimple("./data/processed/"+fileName);
 			String preprocessed="";
+			int length=0;
 			for(String file:fileList)
 			{
 				String content=ContentLoader.readContentSimple(file);
-			
+			    String[] spilter=content.split(" ");
+			    length+=spilter.length;
 				SourceCodePreprocessor scbpp=new SourceCodePreprocessor(content);
 				
 				preprocessed=preprocessed+scbpp.performNLP()+"\n";
@@ -74,10 +77,14 @@ public class SourceCodeCorpusBuilder {
 			
 			System.out.println(filePart);
 			//System.out.println(file_track+" Preprocessed:"+this.sourceCodePPFolder+filePart);
+			if(preprocessed.length()>0){
 			ContentWriter.writeContent(this.sourceCodePPFolder+fineNameTosave+".txt", preprocessed);
+			lengthList.add(fineNameTosave+":"+length);
+			}
 		}
 		System.out.println("Total no. of files: "+file_track);
 		ContentWriter.writeContent(this.base+"\\FileInfo\\"+corpus+"-SourceFileNames.txt", listofFiles);
+		ContentWriter.writeContent(this.base+"\\FileInfo\\"+corpus+"-lengthList.txt", lengthList);
 	}
 	
 	public void loadJavaFilesOnly(final File folder) {
@@ -98,7 +105,7 @@ public class SourceCodeCorpusBuilder {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String corpus="ecf";
+		String corpus="eclipse.jdt.core";
 		String base="E:\\PhD\\TextRankBased\\";
 		//String processsedFolderBase="E:\\PhD\\TextRankBased\\ProcessedSC\\";
 		new SourceCodeCorpusBuilder(corpus,base).createPreprocessedRepo();

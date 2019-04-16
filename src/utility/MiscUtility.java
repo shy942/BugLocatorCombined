@@ -11,8 +11,42 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import proposed.QueryToken;
+
 public class MiscUtility {
 
+    public static void showFullMap(HashMap<String, HashMap<String, QueryToken>> MapTextRankScore)
+    {
+        Iterator it1 = MapTextRankScore.entrySet().iterator();
+        while (it1.hasNext()) {
+            Map.Entry pair = (Map.Entry) it1.next();
+            String keyword = pair.getKey().toString();
+            
+            System.out.println(pair.getKey()+"--------------------------------------------------------------------");
+            HashMap<String, QueryToken> map2=MapTextRankScore.get(keyword);
+            Iterator it2 = map2.entrySet().iterator();
+            while (it2.hasNext()) {
+                Map.Entry pair2 = (Map.Entry) it2.next();
+                String keyword2 = pair2.getKey().toString();
+                QueryToken tokendb2=(QueryToken)pair2.getValue();
+                System.out.println(pair2.getKey() + " = " + tokendb2.tokenRankScore);
+                
+            }
+        }
+    }
+    public void showMap(HashMap<String, QueryToken> tokenRankMap)
+    {
+        Iterator it = tokenRankMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String keyword = pair.getKey().toString();
+            QueryToken tokendb=(QueryToken)pair.getValue();
+            System.out.println(pair.getKey() + " = " + tokendb.tokenRankScore);
+            
+        }
+    }
+    
+    
 	public static void WriiteMappingDatabase(String outFile, HashMap <String, ArrayList<String>> keywordFileMap)
 	{
 		//int i=0;

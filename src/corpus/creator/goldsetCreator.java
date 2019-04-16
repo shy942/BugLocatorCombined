@@ -12,15 +12,112 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import utility.ContentLoader;
 import utility.ContentWriter;
 
 public class goldsetCreator {
 
+    String base;
+    String corpus;
+    ArrayList <String> goldsetList=new ArrayList<>();
+    ArrayList<String> validSoureList=new ArrayList<>();
+    public goldsetCreator(String base, String corpus)
+    {
+        this.base=base;
+        this.corpus=corpus;
+    }
+    
+    
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        new goldsetCreator().createGoldsets("Eclipse", "EclipseBugRepository.xml");
+        String base="E:\\PhD\\TextRankBased\\";
+        String corpus="eclipse.jdt.core";
+        goldsetCreator obj= new goldsetCreator(base, corpus);
+        obj.getValidCorpusInfo();
+        obj.createGoldSetMe();
+        System.out.println(obj.goldsetList);
     }
-    public void createGoldsets(String repo, String xmlFileName)
+    
+    public void getValidCorpusInfo()
+    {
+        ArrayList<String> fileListId=LoadFileLengthList();
+        HashMap<String, String> mappedInfo=getCorpusMapping();
+        for(String fileID: fileListId)
+        {
+            this.validSoureList.add(mappedInfo.get(fileID));
+        }
+        System.out.println(this.validSoureList);
+    }
+    
+    
+    
+    public HashMap<String, String> getCorpusMapping(){
+        HashMap<String, String> mappedInfo=new HashMap<>();
+        
+        ArrayList<String> content=ContentLoader.readContent(this.base+"\\CorpusMappingMe\\"+this.corpus+".txt");
+        for(String line:content)
+        {
+            String[] spilter = line.split(":");
+            String fileID=spilter[0];
+            String fileName=spilter[1];
+            mappedInfo.put(fileID, fileName);
+        }
+        return mappedInfo;
+    }
+    
+    public ArrayList<String> LoadFileLengthList()
+    {
+        ArrayList<String> fileListId=new ArrayList<>();
+        ArrayList<String> content=ContentLoader.readContent(this.base+"\\FileInfo\\"+this.corpus+"-lengthList.txt");
+        for(String line:content)
+        {
+            String[] spilter = line.split(":");
+            String fileID=spilter[0];
+            fileListId.add(fileID);
+        }
+        return fileListId;
+    }
+    public void createGoldSetMe()
+    {
+        //Load Goldset from Masud's creation
+        File goldsetFolder=new File(this.base+"\\Goldset\\"+this.corpus+"\\");
+        for (final File fileEntry : goldsetFolder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                //Do nothing
+            } else {
+                
+                if (fileEntry.getName().endsWith(".txt")) {
+                    //Save to goldsetArrayList
+                    ArrayList<String> content=ContentLoader.readContent(fileEntry.getAbsolutePath());
+                    ArrayList<String> tempList=new ArrayList<>();
+                    int no_of_address_exist=0;
+                    for(String line: content)
+                    {
+                        String[] spilter=line.split("/");
+                        String address=spilter[spilter.length-1];
+                        if(this.validSoureList.contains(address)) 
+                            {
+                                 no_of_address_exist++;
+                                 tempList.add(address);
+                            }
+                        //if(this.validSoureList.contains(address))this.goldsetList.add(fileEntry.getName().substring(0, fileEntry.getName().length()-4)+","+address);
+                    }
+                    if(no_of_address_exist==content.size())
+                        {
+                            for(String line:tempList)
+                            {
+                                this.goldsetList.add(fileEntry.getName().substring(0, fileEntry.getName().length()-4)+","+line);
+                            }
+                        }
+                }
+            }
+        }
+        ContentWriter.writeContent(this.base+"\\GoldsetMe\\"+this.corpus+".txt", this.goldsetList);
+    }
+    
+    
+    
+   /* public void createGoldsets(String repo, String xmlFileName)
     {
         String baseForXMLfile="E:\\PhD\\Repo\\"+repo+"\\bugXML\\";
         String xmlFilePath=baseForXMLfile+xmlFileName;
@@ -96,5 +193,5 @@ public class goldsetCreator {
             ContentWriter.writeContent(changereqsOutputFolder+"\\"+bugID+".txt", listofFixFiles);
         }
        
-   }
+   }*/
 }

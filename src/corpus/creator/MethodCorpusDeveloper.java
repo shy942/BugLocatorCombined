@@ -149,18 +149,18 @@ public class MethodCorpusDeveloper {
 		for (String key : this.methodmap.keySet()) {
 			index++;
 			String methodContent = this.methodmap.get(key);
-			//System.out.println(javaFileURL);
+			System.out.println(javaFileURL);
 			//javaFileURL.replaceAll("\\\\", "/");
 			
 			
 			//filePart=this.packageName+"."+index+"."+lastPart;
 			filePart=lastPart.substring(0,lastPart.length()-5)+"."+index+".txt";
 			String outFile = this.methodFolder + "\\"+filePart;
-			System.out.println("filePart:        "+filePart);
+			//System.out.println("filePart:        "+filePart);
 			SourceCodePreprocessor scbpp=new SourceCodePreprocessor(methodContent);
             
             String preprocessed=scbpp.performNLP();
-            System.out.println(preprocessed);
+            //System.out.println(preprocessed);
 			ContentWriter.writeContent(outFile, preprocessed);
 			fileList.add(outFile);
 		}
