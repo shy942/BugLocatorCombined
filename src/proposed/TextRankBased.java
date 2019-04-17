@@ -42,11 +42,11 @@ public class TextRankBased {
         String cospusFolderPath="E:\\PhD\\TextRankBased\\processsedFolderBase\\";
         String queryFolderPath="E:\\PhD\\TextRankBased\\BR-Query\\"+corpusname+"-query.txt";
         TextRankBased obj=new TextRankBased(corpusname, cospusFolderPath);
-        obj.getTextRankForAll();
+        //obj.getTextRankForAll();
         obj.testWithQuery(queryFolderPath);
         MiscUtility.showFullMap(obj.queryTextRankScore);
-        MiscUtility.showFullMap(obj.corpusTextRankScore);
-        new rVSMscoreProvider(base, corpusname, obj.queryTextRankScore, obj.corpusTextRankScore).rVSMcalculatorManager();
+        //MiscUtility.showFullMap(obj.corpusTextRankScore);
+        //new rVSMscoreProvider(base, corpusname, obj.queryTextRankScore, obj.corpusTextRankScore).rVSMcalculatorManager();
      }
     
    

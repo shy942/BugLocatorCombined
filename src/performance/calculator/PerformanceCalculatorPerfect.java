@@ -36,10 +36,11 @@ public class PerformanceCalculatorPerfect {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String base="E:\\PhD\\TextRankBased\\";
-		String corpus="eclipse.jdt.core";
+		String corpus="ecf";
 		
 		PerformanceCalculatorPerfect obj=new PerformanceCalculatorPerfect(base, corpus);
 		HashMap<String, ArrayList<String>> resultTop10=ComputePerformancePercent(10, obj);
+		//MiscUtility.showResult(obj.resultsMap.size()-1, obj.resultsMap);
         MiscUtility.showResult(resultTop10.size(), resultTop10);
         int count=0;
         for(String key:resultTop10.keySet())System.out.println(++count+" "+key+" "+resultTop10.get(key));
@@ -296,6 +297,7 @@ public class PerformanceCalculatorPerfect {
 			ArrayList <String> resultList= obj.resultsMap.get(bugID); //Get the experimented results
 	        if(obj.goldResultsMap.containsKey(bugID))// Truth set contains the bug
 	        {
+	            System.out.println(bugID);
 	        	ArrayList <String> gitList=obj.goldResultsMap.get(bugID);
 	        	no_of_bug_matched++;
 	        	ArrayList<String> list=getRankedResult(resultList,gitList, bugID, TOP_K);
@@ -304,7 +306,7 @@ public class PerformanceCalculatorPerfect {
 	        	if(list.size()>0){
 	        		
 	        		total_found++;
-	        		System.out.println(bugID);
+	        		
 	        		finalRankedResultlocal.put(bugID, list);
 	        	}
 	        }
