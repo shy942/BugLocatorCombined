@@ -20,12 +20,13 @@ public class PerformanceCalculatorPerfect {
 
 	
 	
-	public PerformanceCalculatorPerfect(String base, String corpus)
+	public PerformanceCalculatorPerfect(String base, String corpus, String type)
 	{
 		this.base=base;
 		this.corpus=corpus;
-		this.resultsMap=this.getContent(this.base+"\\Result\\"+this.corpus+"_result.txt");
 		this.goldResultsMap=this.getContent(this.base+"\\GoldsetMe\\"+this.corpus+".txt");
+		this.resultsMap=this.getResultContent(this.base+"\\Result\\"+this.corpus+"_result"+type+".txt");
+		
 		
 	}
 	
@@ -37,117 +38,30 @@ public class PerformanceCalculatorPerfect {
 		// TODO Auto-generated method stub
 		String base="E:\\PhD\\TextRankBased\\";
 		String corpus="ecf";
+		String type="";
+		PerformanceCalculatorPerfect obj=new PerformanceCalculatorPerfect(base, corpus, type);
+		System.out.println(obj.resultsMap);
+		System.out.println(obj.goldResultsMap);
+		//Top #1
+		HashMap<String, ArrayList<String>> resultTop1=ComputePerformancePercent(1, obj);
+		double percentageT1=Double.valueOf(resultTop1.size())/Double.valueOf(obj.goldResultsMap.size())*100;
+		System.out.println(resultTop1.size()+"/"+obj.resultsMap.size());
+        System.out.println("Top #1% = "+percentageT1);
+        System.out.println("MAP = "+ComputeMAP(resultTop1,obj));
+        System.out.println("MRR@10 = "+ComputeMRR(resultTop1, obj, 1));
 		
-		PerformanceCalculatorPerfect obj=new PerformanceCalculatorPerfect(base, corpus);
+        //Top #10
 		HashMap<String, ArrayList<String>> resultTop10=ComputePerformancePercent(10, obj);
 		//MiscUtility.showResult(obj.resultsMap.size()-1, obj.resultsMap);
-        MiscUtility.showResult(resultTop10.size(), resultTop10);
-        int count=0;
-        for(String key:resultTop10.keySet())System.out.println(++count+" "+key+" "+resultTop10.get(key));
-        double percentageT10=Double.valueOf(resultTop10.size())/Double.valueOf(obj.resultsMap.size())*100;
-        System.out.println(percentageT10);
-        System.out.println( ComputeMAP(resultTop10,obj));
-        System.out.println(ComputeMRR(resultTop10, obj, 10));
+        //for(String key:resultTop10.keySet())System.out.println(++count+" "+key+" "+resultTop10.get(key));
+        double percentageT10=Double.valueOf(resultTop10.size())/Double.valueOf(obj.goldResultsMap.size())*100;
+        System.out.println(resultTop10.size()+"/"+obj.resultsMap.size());
+        System.out.println("Top #10% = "+percentageT10);
+        System.out.println("MAP = "+ ComputeMAP(resultTop10,obj));
+        System.out.println("MRR@10 = "+ComputeMRR(resultTop10, obj, 10));
 	}
 
   
-	
-	
-	
-
-	
-	public static void getSingleResult()
-	{
-   	
-			
-		
-
-		
-        
-       
-		//MiscUtility.showResult(10, finalRankedResult);
-	}
-	
-	public static HashMap<String, Double> getResultForTopK(PerformanceCalculatorPerfect obj)
-	{
-		
-		boolean emptybug=false;
-		HashMap<String, Double> resultHM=new HashMap<>();
-		int TOP_K=1;
-		int count=0;
-		//System.out.println("Result for Top-"+TOP_K);
-		HashMap<String, ArrayList<String>> resultTop1=ComputePerformancePercent(TOP_K, obj);
-		if(resultTop1.size()>0){
-            for(String key:resultTop1.keySet()) {
-                //System.out.println(++count+" "+key+" "+resultTop1.get(key));
-                resultHM.put("bugid", Double.valueOf(key));
-            }
-        }
-        else {
-            Set<String> hashset=obj.resultsMap.keySet();
-            String id=hashset.toString();
-            id=id.substring(1,id.length()-1);
-            //System.out.println(id);
-            if(id.isEmpty()==false)
-            {
-                resultHM.put("bugid", Double.valueOf(id));
-               
-            }
-            else 
-            {
-                resultHM.put("bugid", 1.00);
-                emptybug=true;
-            }
-        }
-		//MiscUtility.showResult(resultTop1.size(), resultTop1);
-		
-		for(String key:resultTop1.keySet())
-		    {
-		       // System.out.println(++count+" "+key+" "+resultTop1.get(key));
-		        //resultHM.put("bugid", Double.valueOf(key));
-		    }
-		
-		double percentageT1=Double.valueOf(resultTop1.size())/Double.valueOf(obj.resultsMap.size())*100;
-		if(emptybug==false)resultHM.put("T1", percentageT1); else resultHM.put("T1", 0.0);
-		if(emptybug==false)resultHM.put("MAP@1", ComputeMAP(resultTop1,obj));else resultHM.put("MAP@1", 0.0);
-		if(emptybug==false)resultHM.put("MRR@1", ComputeMRR(resultTop1,obj, TOP_K));else resultHM.put("MRR@1", 0.0);
-		//System.out.println("MRR at "+TOP_K+" "+ComputeMRR(resultTop1,obj, TOP_K));
-		//System.out.println("MAP at "+TOP_K+" "+ComputeMAP(resultTop1,obj));
-		
-		//finalRankedResult.clear();
-		//System.out.println("=============================================================================");
-		TOP_K=5;
-		//System.out.println("Result for Top-"+TOP_K);
-		HashMap<String, ArrayList<String>> resultTop5=ComputePerformancePercent(TOP_K, obj);
-		count=0;
-		//for(String key:resultTop5.keySet())System.out.println(++count+" "+key+" "+resultTop5.get(key));
-		double percentageT5=Double.valueOf(resultTop5.size())/Double.valueOf(obj.resultsMap.size())*100;
-		if(emptybug==false)resultHM.put("T5", percentageT5);else resultHM.put("T5", 0.0); 
-		if(emptybug==false)resultHM.put("MAP@5", ComputeMAP(resultTop5,obj)); else resultHM.put("MAP@5", 0.0);
-		if(emptybug==false)resultHM.put("MRR@5", ComputeMRR(resultTop5,obj, TOP_K)); else resultHM.put("MRR@5", 0.0);
-		
-		
-		//System.out.println("=============================================================================");
-		TOP_K=10;
-		//System.out.println("Result for Top-"+TOP_K);
-		HashMap<String, ArrayList<String>> resultTop10=ComputePerformancePercent(TOP_K, obj);
-		
-		double percentageT10=Double.valueOf(resultTop10.size())/Double.valueOf(obj.resultsMap.size())*100;
-		if(emptybug==false)resultHM.put("T10", percentageT10); else resultHM.put("T10", 0.0);
-		//resultHM.put("T10", ComputePerformancePercent(TOP_K, obj));
-		//MiscUtility.showResult(resultTop10.size(), resultTop10);
-		//System.out.println("=================="+finalRankedResult.size());
-		//System.out.println("MRR at "+TOP_K+" "+ComputeMRR(resultTop10,obj, TOP_K));
-		//System.out.println("MAP at "+TOP_K+" "+ComputeMAP(resultTop10,obj));
-		
-		if(emptybug==false)resultHM.put("MAP@10", ComputeMAP(resultTop10,obj));else resultHM.put("MAP@10", 0.0);
-		if(emptybug==false)resultHM.put("MRR@10", ComputeMRR(resultTop10,obj, TOP_K)); else resultHM.put("MRR@10", 0.0);
-		//MiscUtility.showResult(10, resultHM);
-		//FindBestRank(1000, obj);
-		return resultHM;
-	}
-	
-	
 	
 	
 	public static double ComputeMAP(HashMap<String, ArrayList<String>> finalRankedResult, PerformanceCalculatorPerfect obj)
@@ -258,7 +172,7 @@ public class PerformanceCalculatorPerfect {
 			for(String GoldFile:gitList){
 				if(GoldFile.equalsIgnoreCase(file.trim())){
 					found=1;
-					System.out.println(file);
+					//System.out.println(file);
 				}	
 			}
 			
@@ -277,6 +191,7 @@ public class PerformanceCalculatorPerfect {
 			if(IsMatched(file, gitList,bugID,TOP_K))
 			{
 				list.add(String.valueOf(count));
+				//System.out.println(bugID+" "+file);
 			}
 			//count++;
 		}
@@ -297,7 +212,7 @@ public class PerformanceCalculatorPerfect {
 			ArrayList <String> resultList= obj.resultsMap.get(bugID); //Get the experimented results
 	        if(obj.goldResultsMap.containsKey(bugID))// Truth set contains the bug
 	        {
-	            System.out.println(bugID);
+	            //System.out.println(bugID);
 	        	ArrayList <String> gitList=obj.goldResultsMap.get(bugID);
 	        	no_of_bug_matched++;
 	        	ArrayList<String> list=getRankedResult(resultList,gitList, bugID, TOP_K);
@@ -348,12 +263,42 @@ public class PerformanceCalculatorPerfect {
 			            hm.put(bugID, tempList);
 			        }
 			    }
-				System.out.println("Changeset reloaded successfully for :"
+				System.out.println("Goldset reloaded successfully for :"
 						+ hm.size());
 				return hm;
 	
 	}
 
-
+	private HashMap<String, ArrayList<String>> getResultContent (String gitPath) {
+        // TODO Auto-generated method stub
+        // TODO Auto-generated method stub
+                HashMap<String, ArrayList<String>>hm=new HashMap<>();
+                ArrayList<String> lines = ContentLoader
+                        .readContent(gitPath);
+                for(String line: lines)
+                {
+                    String [] spilter=line.split(",");
+                    String bugID=spilter[0];
+                    if(this.goldResultsMap.containsKey(bugID)){
+                    String address=spilter[1];
+                    if(hm.containsKey(bugID))
+                    {
+                        ArrayList <String> tempList=hm.get(bugID);
+                        tempList.add(address);
+                        hm.put(bugID, tempList);
+                    }
+                    else
+                    {
+                        ArrayList <String> tempList=new ArrayList<>();
+                        tempList.add(address);
+                        hm.put(bugID, tempList);
+                    }
+                    }
+                }
+                System.out.println("Result sets reloaded successfully for :"
+                        + hm.size());
+                return hm;
+                
+    }
 	
 }

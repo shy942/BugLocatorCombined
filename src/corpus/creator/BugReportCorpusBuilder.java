@@ -74,7 +74,7 @@ public class BugReportCorpusBuilder {
 		//IndividualYearProcessing();
 		//PutAll2gether();
 	    String base="E:\\PhD\\TextRankBased\\";
-	    String corpus="eclipse.jdt.core";
+	    String corpus="ecf";
 		new BugReportCorpusBuilder(base, corpus).createPreprocessedRepo();
 	}
 

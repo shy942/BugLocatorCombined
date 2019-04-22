@@ -105,7 +105,7 @@ public class SourceCodeCorpusBuilder {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String corpus="eclipse.jdt.core";
+		String corpus="ecf";
 		String base="E:\\PhD\\TextRankBased\\";
 		//String processsedFolderBase="E:\\PhD\\TextRankBased\\ProcessedSC\\";
 		new SourceCodeCorpusBuilder(corpus,base).createPreprocessedRepo();

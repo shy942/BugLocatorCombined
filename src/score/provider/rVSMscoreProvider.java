@@ -69,7 +69,7 @@ public class rVSMscoreProvider {
     }
     public double getMinLenth(HashMap <String, Double> Map)
     {
-        double minLength=1000;
+        double minLength=100000;
         
         for(String key:Map.keySet())
         {
@@ -78,13 +78,13 @@ public class rVSMscoreProvider {
         }
         return minLength;
     }
-    public void rVSMcalculatorManager()
+    public void rVSMcalculatorManager(String type)
     {
         MiscUtility.showFullMap(this.queryTextRankScore);
         MiscUtility.showFullMap(this.corpusTextRankScore);
         System.out.println("I am from rVSM calculator");
         TermDocumentCalculator();
-        calculaterVSMforAllQuery();
+        calculaterVSMforAllQuery(type);
     }
     
     
@@ -101,9 +101,9 @@ public class rVSMscoreProvider {
                    tempDocumentMap=this.TermDocumentMap.get(word);
                    if(tempDocumentMap.containsKey(docId))
                    {
-                       double nt=tempDocumentMap.get(docId);
-                       nt =nt + 1.0;
-                       tempDocumentMap.put(docId, nt);
+                       //double nt=tempDocumentMap.get(docId);
+                       //nt =nt + 1.0;
+                       //tempDocumentMap.put(docId, nt);
                    }
                    else
                    {
@@ -123,7 +123,7 @@ public class rVSMscoreProvider {
         //System.out.println(this.TermDocumentMap);
     }
     
-    protected void calculaterVSMforAllQuery()
+    protected void calculaterVSMforAllQuery(String type)
     {
         //Calculate Nx
        // double Nx=(Double.valueOf(this.totalDocumnet)-Double.valueOf(this.minLength))/(Double.valueOf(this.maxLength)-Double.valueOf(this.minLength));
@@ -132,7 +132,7 @@ public class rVSMscoreProvider {
         ArrayList<String> resultAll=new ArrayList<>();
         for(String qid: this.queryTextRankScore.keySet())
         {
-            System.out.println(qid+"----------------------------------------------------------------------------------------------"+this.maxLength+" "+this.minLength);
+            //System.out.println(qid+"----------------------------------------------------------------------------------------------"+this.maxLength+" "+this.minLength);
             HashMap<String, QueryToken> queryInfo=this.queryTextRankScore.get(qid);
             HashMap <String, Double> finalResult=new HashMap<>();
             for(String docID:this.corpusTextRankScore.keySet())
@@ -168,7 +168,7 @@ public class rVSMscoreProvider {
                 count++;
             }
         }
-        ContentWriter.writeContent(this.base+"\\Result\\"+this.corpus+"_result.txt", resultAll);
+        ContentWriter.writeContent(this.base+"\\Result\\"+this.corpus+"_result"+type+".txt", resultAll);
     }
     
     
@@ -204,14 +204,14 @@ public class rVSMscoreProvider {
             double qTF=tokendb.tokenRankScore;
             double first=Math.log(qTF)+1;
            
-            double dTF=0.0;
+            double nt=0.0;
             if(this.TermDocumentMap.containsKey(qword))
             {
                 HashMap<String, Double> temp= this.TermDocumentMap.get(qword);
-                if(temp.containsKey(docID))dTF=temp.get(docID);
+                if(temp.containsKey(docID))nt=temp.size();
             }
-            double second=1;
-            if(dTF>0.0) second+=Math.log(dTF);
+            double second=0;
+            if(nt>0.0) second+=Math.log10(this.totalDocumnet/nt);
             double score=first*second;
             double squaredScore=Math.pow(score, 2);
             qsum+=squaredScore;
@@ -226,15 +226,15 @@ public class rVSMscoreProvider {
         {
             QueryToken tokendbdoc=docInfo.get(dword);
             double dTF=tokendbdoc.tokenRankScore;
-            double first=Math.log(dTF)+1;
+            double first=Math.log10(dTF)+1;
             double nt=0.0;
             if(this.TermDocumentMap.containsKey(dword))
             {
                 HashMap<String, Double> temp= this.TermDocumentMap.get(dword);
-                if(temp.containsKey(docID))nt=temp.get(docID);
+                if(temp.containsKey(docID))nt=temp.size();
             }
-            double second=1;
-            if(nt>0.0) second+=Math.log(nt);
+            double second=0;
+            if(nt>0.0) second+=Math.log(this.totalDocumnet/nt);
             double score=first*second;
             double squaredScore=Math.pow(score, 2);
             dsum+=squaredScore;
@@ -253,22 +253,22 @@ public class rVSMscoreProvider {
                 QueryToken tokendb=queryInfo.get(qword);
                 
                 double qTF=tokendb.tokenRankScore;
-                double first=Math.log(qTF)+1;
+                double first=Math.log10(qTF)+1;
                 double dTF=0.0;
                 if(docInfo.containsKey(qword)) 
                 {
                     QueryToken tokendbCorpus=docInfo.get(qword);
                     dTF=tokendbCorpus.tokenRankScore;
                 }
-                double second=1;
-                if(dTF>0.0) second+=Math.log(dTF);
+                double second=0;
+                if(dTF>0.0) second=Math.log10(dTF);
                 double third=0;
                 
                 //if(docInfo.containsKey(qword))third=2*Math.log(this.totalDocumnet/ddfMap.get(t)); 
                 if(this.TermDocumentMap.containsKey(qword))
                 {
                     HashMap<String, Double> temp= this.TermDocumentMap.get(qword);
-                    if(temp.containsKey(docID))third=2*Math.log(this.totalDocumnet/temp.get(docID));
+                    third=(Math.log(this.totalDocumnet/temp.size()))*(Math.log10(this.totalDocumnet/temp.size()));
                 }
                 double score=first*second*third;
                 sum+=score;

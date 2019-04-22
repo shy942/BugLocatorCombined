@@ -8,6 +8,7 @@ import java.util.Locale;
 import config.StaticData;
 import utility.ContentLoader;
 import utility.MiscUtility;
+import NLP.Stemmer;
 
 public class BugReportPreprocessor {
 
@@ -195,7 +196,10 @@ public class BugReportPreprocessor {
 					word=word.replaceAll("”", "");
 					if(!word.isEmpty())
 						{
-						    processed.add(word.trim());
+					  //Do stemming
+	                    Stemmer stObj=new Stemmer();
+	                    String stmWord=stObj.stripAffixes(word);
+						    processed.add(stmWord.trim());
 							found=1;
 							
 						    }

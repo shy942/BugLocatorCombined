@@ -31,7 +31,7 @@ public class goldsetCreator {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         String base="E:\\PhD\\TextRankBased\\";
-        String corpus="eclipse.jdt.core";
+        String corpus="eclipse.jdt.debug";
         goldsetCreator obj= new goldsetCreator(base, corpus);
         obj.getValidCorpusInfo();
         obj.createGoldSetMe();

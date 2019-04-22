@@ -14,7 +14,7 @@ public class rVSMScoreProviderForTF {
     
     HashMap<String, HashMap<String, Double>> queryTFscore;
     HashMap<String, HashMap<String, Double>> corpusTFscore;
-    HashMap<String, Double> TermDocumentMap;
+    HashMap<String, HashMap<String, Double>> TermDocumentMap;
     HashMap<String, Double> LengthInfoMap;
     HashMap<String, String> corpusMap;
     int totalDocumnet;
@@ -69,7 +69,7 @@ public class rVSMScoreProviderForTF {
     }
     public double getMinLenth(HashMap <String, Double> Map)
     {
-        double minLength=1000;
+        double minLength=100000;
         
         for(String key:Map.keySet())
         {
@@ -78,13 +78,13 @@ public class rVSMScoreProviderForTF {
         }
         return minLength;
     }
-    public void rVSMcalculatorManager()
+    public void rVSMcalculatorManager(String type)
     {
-        MiscUtility.showResult(10,this.queryTFscore);
-        MiscUtility.showResult(10,this.corpusTFscore);
+        MiscUtility.showResult(10, this.queryTFscore);
+        MiscUtility.showResult(10, this.corpusTFscore);
         System.out.println("I am from rVSM calculator");
         TermDocumentCalculator();
-        calculaterVSMforAllQuery();
+        calculaterVSMforAllQuery(type);
     }
     
     
@@ -92,39 +92,49 @@ public class rVSMScoreProviderForTF {
     {
         for(String docId: this.corpusTFscore.keySet())
         {
-            
+            HashMap<String, Double> tempDocumentMap=new HashMap<>();
             HashMap<String, Double> textRankMap=this.corpusTFscore.get(docId);
             for(String word: textRankMap.keySet())
             {
                 if(this.TermDocumentMap.containsKey(word))
                 {
-                   double nt=TermDocumentMap.get(word);
-                   nt =nt + 1.0;
-                   
-                   this.TermDocumentMap.put(word, nt);
+                   tempDocumentMap=this.TermDocumentMap.get(word);
+                   if(tempDocumentMap.containsKey(docId))
+                   {
+                       //double nt=tempDocumentMap.get(docId);
+                       //nt =nt + 1.0;
+                       //tempDocumentMap.put(docId, nt);
+                   }
+                   else
+                   {
+                       //tempDocumentMap=new HashMap<>();
+                       tempDocumentMap.put(docId, 1.0);
+                   }
+                   this.TermDocumentMap.put(word, tempDocumentMap);
                 }
                 else
                 {
-                    
-                    this.TermDocumentMap.put(word, 1.0);
+                    tempDocumentMap=new HashMap<>();
+                    tempDocumentMap.put(docId, 1.0);
+                    this.TermDocumentMap.put(word, tempDocumentMap);
                 }
             }
         }
         //System.out.println(this.TermDocumentMap);
     }
     
-    protected void calculaterVSMforAllQuery()
+    protected void calculaterVSMforAllQuery(String type)
     {
         //Calculate Nx
        // double Nx=(Double.valueOf(this.totalDocumnet)-Double.valueOf(this.minLength))/(Double.valueOf(this.maxLength)-Double.valueOf(this.minLength));
         //Calculate gTerms
         //double gTerms=1/(1+Math.exp(-Nx));
         ArrayList<String> resultAll=new ArrayList<>();
-        //MiscUtility.showResult(this.TermDocumentMap.size()-1, this.TermDocumentMap);
         for(String qid: this.queryTFscore.keySet())
         {
-            System.out.println(qid+"----------------------------------------------------------------------------------------------"+this.maxLength+" "+this.minLength);
+            //System.out.println(qid+"----------------------------------------------------------------------------------------------"+this.maxLength+" "+this.minLength);
             HashMap<String, Double> queryInfo=this.queryTFscore.get(qid);
+            System.out.println(qid+" "+queryInfo);
             HashMap <String, Double> finalResult=new HashMap<>();
             for(String docID:this.corpusTFscore.keySet())
             {
@@ -151,16 +161,18 @@ public class rVSMScoreProviderForTF {
                 
             }
             HashMap<String, Double> normalizedAndSortedResult=doNormalization(finalResult);
-            System.out.println(normalizedAndSortedResult);
+            //HashMap<String, Double> sortedResult=MiscUtility.sortByValues(finalResult);
+            //System.out.println(normalizedAndSortedResult);
             int count=0;
             for(String docID:normalizedAndSortedResult.keySet())
             {
-                if(count>10) break;
-                resultAll.add(qid+","+docID+","+normalizedAndSortedResult.get(docID));
+                if(count>9) break;
+                String fullPath=this.corpusMap.get(docID);
+                resultAll.add(qid+","+fullPath+","+normalizedAndSortedResult.get(docID));
                 count++;
             }
         }
-        ContentWriter.writeContent(this.base+"\\Result\\"+this.corpus+"_result.txt", resultAll);
+        ContentWriter.writeContent(this.base+"\\Result\\"+this.corpus+"_result"+type+".txt", resultAll);
     }
     
     
@@ -173,9 +185,9 @@ public class rVSMScoreProviderForTF {
         {
             double score=finalResultEachQuery.get(key);
             double normalizedScore=(score-minlength)/(maxLength-minlength);
-            String fullPath=this.corpusMap.get(key);
-            normalizedResult.put(fullPath, normalizedScore);
-            //normalizedResult.put(key, normalizedScore);
+            //String fullPath=this.corpusMap.get(key);
+            //normalizedResult.put(fullPath, normalizedScore);
+            normalizedResult.put(key, normalizedScore);
         }
         HashMap<String, Double> sortedResult=MiscUtility.sortByValues(normalizedResult);
         return sortedResult;
@@ -194,17 +206,19 @@ public class rVSMScoreProviderForTF {
             
             
             double qTF=queryInfo.get(qword);
-            double first=Math.log(qTF)+1;
+            double first=Math.log10(qTF)+1;
            
             double nt=0.0;
             if(this.TermDocumentMap.containsKey(qword))
             {
-               nt=this.TermDocumentMap.get(qword);
+                HashMap<String, Double> temp= this.TermDocumentMap.get(qword);
+                nt=temp.size();
             }
-            double second=1.0;
-            if(nt>0.0) second+=Math.log(this.totalDocumnet/nt);
+            double second=0;
+            if(nt>0.0) second+=Math.log10(this.totalDocumnet/nt);
             double score=first*second;
             double squaredScore=Math.pow(score, 2);
+            //System.out.println(qword+" "+score+" "+squaredScore);
             qsum+=squaredScore;
         }
         qsqrt=Math.sqrt(qsum);
@@ -215,16 +229,17 @@ public class rVSMScoreProviderForTF {
         
         for(String dword: docInfo.keySet())
         {
-            
+           
             double dTF=docInfo.get(dword);
-            double first=Math.log(dTF)+1;
+            double first=Math.log10(dTF)+1;
             double nt=0.0;
             if(this.TermDocumentMap.containsKey(dword))
             {
-                nt=this.TermDocumentMap.get(dword);
+                HashMap<String, Double> temp= this.TermDocumentMap.get(dword);
+                nt=temp.size();
             }
-            double second=1.0;
-            if(nt>0.0) second+=Math.log(this.totalDocumnet/nt);
+            double second=0;
+            if(nt>0.0) second+=Math.log10(this.totalDocumnet/nt);
             double score=first*second;
             double squaredScore=Math.pow(score, 2);
             dsum+=squaredScore;
@@ -240,26 +255,26 @@ public class rVSMScoreProviderForTF {
             double scoreUpperPart=0.0;
             double sum=0;
             for(String qword: queryInfo.keySet()){
-               
+                
                 
                 double qTF=queryInfo.get(qword);
-                double first=Math.log(qTF)+1;
-                double dTF = 0;
+                double first=Math.log10(qTF)+1;
+                double dTF=0.0;
                 if(docInfo.containsKey(qword)) 
                 {
                     
                     dTF=docInfo.get(qword);
                 }
-                double second=1.0;
-                if(dTF>0.0)second+=Math.log(dTF);
+                double second=0;
+                if(dTF>0.0) second+=Math.log10(dTF);
                 double third=0;
                 
-                double nt=0;
                 //if(docInfo.containsKey(qword))third=2*Math.log(this.totalDocumnet/ddfMap.get(t)); 
                 if(this.TermDocumentMap.containsKey(qword))
                 {
-                    nt=this.TermDocumentMap.get(qword);
-                    third=2*Math.log(this.totalDocumnet/nt);
+                    HashMap<String, Double> temp= this.TermDocumentMap.get(qword);
+                    
+                    third=(Math.log(this.totalDocumnet/temp.size()))*(Math.log10(this.totalDocumnet/temp.size()));
                 }
                 double score=first*second*third;
                 sum+=score;

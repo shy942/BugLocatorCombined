@@ -28,12 +28,14 @@ public class TFiDFBased {
        String corpusFolderPath;
        HashMap<String, HashMap<String, Double>> queryTFscore;
        HashMap<String, HashMap<String, Double>> corpusTFscore;
-       public TFiDFBased(String corpusname, String corpusFolderPath)
+       String queryFolderPath;
+       public TFiDFBased(String corpusname, String corpusFolderPath, String queryFolderPath)
        {
            this.corpusname=corpusname;
            this.corpusFolderPath=corpusFolderPath;
            this.queryTFscore= new HashMap<>();
            this.corpusTFscore=new HashMap<>();
+           this.queryFolderPath=queryFolderPath;
        }
 
        public static void main(String[] args) {
@@ -43,13 +45,14 @@ public class TFiDFBased {
         String corpusname="ecf";
         String cospusFolderPath="E:\\PhD\\TextRankBased\\processsedFolderBase\\";
         String queryFolderPath="E:\\PhD\\TextRankBased\\BR-Query\\"+corpusname+"-query.txt";
-        TFiDFBased obj=new TFiDFBased(corpusname, cospusFolderPath);
+        TFiDFBased obj=new TFiDFBased(corpusname, cospusFolderPath, queryFolderPath);
         obj.getTFscoreAllcorpus();
         obj.testWithQuery(queryFolderPath);
         MiscUtility.showResult(10,obj.queryTFscore);
-        MiscUtility.showResult( obj.corpusTFscore.size()-1, obj.corpusTFscore);
-        ContentWriter.writeContent(base+"//Test//"+"tfscoreCorpus.txt", obj.corpusTFscore);
-        new rVSMScoreProviderForTF(base, corpusname, obj.queryTFscore, obj.corpusTFscore).rVSMcalculatorManager();
+        MiscUtility.showResult(10,obj.corpusTFscore);
+        //MiscUtility.showResult( obj.corpusTFscore.size()-1, obj.corpusTFscore);
+        //ContentWriter.writeContent(base+"//Test//"+"tfscoreCorpus.txt", obj.corpusTFscore);
+        new rVSMScoreProviderForTF(base, corpusname, obj.queryTFscore, obj.corpusTFscore).rVSMcalculatorManager("");
      }
     
    

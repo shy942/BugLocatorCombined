@@ -22,7 +22,7 @@ public class MapperCreator {
         // TODO Auto-generated method stub
 
         String base="E:\\PhD\\TextRankBased\\";
-        String corpus="eclipse.jdt.core";
+        String corpus="eclipse.jdt.debug";
         
         MapperCreator obj=new MapperCreator(base, corpus);
         obj.loadMap();

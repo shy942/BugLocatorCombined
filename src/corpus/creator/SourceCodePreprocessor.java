@@ -9,6 +9,7 @@ import source.visitor.CommentFilterer;
 import config.StaticData;
 import utility.ContentLoader;
 import utility.MiscUtility;
+import NLP.Stemmer;
 
 public class SourceCodePreprocessor {
 
@@ -67,7 +68,13 @@ public class SourceCodePreprocessor {
 					// System.out.println("word: "+word+"\n");
 					word=word.toLowerCase();
 					word=word.trim();
-					list.add(word);
+					
+					//Do stemming
+					Stemmer stObj=new Stemmer();
+					String stmWord=stObj.stripAffixes(word);
+					
+					
+					list.add(stmWord);
 				}
 			}
 		}
